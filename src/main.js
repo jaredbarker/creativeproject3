@@ -4,7 +4,15 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+let data = {
+  catpicsfacts: [],
+  dogpicsfacts: [],
+  allCatFacts: [],
+} 
+
+
 new Vue({
-  router,
-  render: h => h(App)
+    router,
+    data,
+    render: h => h(App)
 }).$mount('#app')
