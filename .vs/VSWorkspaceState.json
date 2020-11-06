@@ -8,6 +8,6 @@
     "\\src\\router",
     "\\src\\views"
   ],
-  "SelectedNode": "\\public\\index.html",
+  "SelectedNode": "\\src\\components\\SavedFactsList.vue",
   "PreviewInSolutionExplorer": false
 }

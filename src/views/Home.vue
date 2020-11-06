@@ -6,11 +6,14 @@
       <button v-on:click="getDogItem">Dog</button>
     </div>
     <div id="content">
-      <div id="img-holder">
-        <img :src="currentImage" alt="Sorry, this image could not be displayed"/>
+      <div v-if="isMP4" id="video-holder">
+        <video :src="reactiveImage" autoplay loop>Sorry, this mp4 file could not be displayed, try another dog image</video>
+      </div>
+      <div v-else id="img-holder">
+        <img :src="reactiveImage" alt="Sorry, this file could not be displayed, try another dog image"/>
       </div>
       <div id="fact-save">
-        <p>{{currentFact}}</p>
+        <p>{{reactiveFact}}</p>
         <button v-on:click="saveItem">Save</button>
       </div>
     </div>
@@ -24,7 +27,7 @@ export default {
   data() {
     return {
       currentImage: '',
-      currentFact: 'You can save facts and images you like to view them on the Dog and Cat pages',
+      currentFact: 'You can save facts and images you like and view them on the Dog and Cat pages',
       currentType: 'cat'
     }
   },
@@ -34,13 +37,16 @@ export default {
     },
     reactiveImage() {
       return this.currentImage;
+    },
+    isMP4() {
+      return this.currentImage.substring(this.currentImage.length - 3, this.currentImage.length) === "mp4";
     }
   },
   created() {
     fetch("https://cat-fact.herokuapp.com/facts")
       .then(response => response.json())
       .then(facts => this.$root.$data.allCatFacts = facts.all);
-    this.getCatItem();
+    this.getDogItem();
   },
   methods: {
     getCatItem() {
@@ -50,7 +56,7 @@ export default {
       this.currentFact = this.$root.$data.allCatFacts[Math.round(Math.random() * this.$root.$data.allCatFacts.length)].text;
       this.currentType = "cat";
     },
-    getDogItem() {
+    async getDogItem() {
       fetch("https://random.dog/woof.json")
         .then(response => response.json())
         .then(data => this.currentImage = data.url);
@@ -72,39 +78,112 @@ export default {
 </script>
 
 <style scoped>
-.home {
-color: white;
-}
-#options {
-display: flex;
-margin: 5px;
-align-items: center;
-justify-content: center;
-}
 
-#options p, #options button {
-margin-left: 10px;
-margin-right: 10px;
-}
+  @media only screen and (max-width: 1200px) {
+  .home {
+  color: white;
+  }
+  #options {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  }
 
-#content {
-height: 400px;
-margin: auto;
-display: flex;
-align-items: center;
-justify-content: space-around;
-}
+  #options p, #options button {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  }
 
-#img-holder {
-width: 40%;
-height: 100%;
-}
+  #content {
+  height: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: center;
+  }
 
-#fact-save {
-width: 30%;
-}
+  #img-holder {
+  height: 67%;
+  }
+  
+  #video-holder {
+  height: 67%;
+  }
+  
+  #fact-save {
+  height: 20%;
+  width: 93%;
+  margin: auto;
+  }
 
-img {
-height: 100%;
-}
+  #fact-save p {
+  text-align: center
+  }
+
+  img {
+  height: 100%;
+  }
+  
+  video {
+  height: 100%;
+  }
+  }
+
+  @media only screen and (min-width: 1201px) {
+  .home {
+  color: white;
+  }
+  #options {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  }
+
+  #options p, #options button {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  }
+
+  #content {
+  height: 395px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  }
+
+  #img-holder {
+  width: 40%;
+  height: 100%;
+  }
+  
+  #video-holder {
+  width: 40%;
+  height: 100%
+  }
+  
+  video {
+  height: 100%;
+  }
+
+  #fact-save {
+  width: 20%;
+  }
+
+  #fact-save p {
+  text-align: justify;
+  text-justify: inter-word;
+  }
+
+  img {
+  height: 100%;
+  }
+  }
 </style>
