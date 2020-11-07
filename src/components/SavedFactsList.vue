@@ -25,6 +25,8 @@
       </div>
     </div>
   </div>
+  <div id="bottom-spacer">
+  </div>
   </div>
 </template>
 
@@ -51,7 +53,58 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 1201px) {
+@media only screen and (max-width: 601px) {
+#bottom-spacer {
+height: 100px;
+}
+.all {
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: space-around;
+}
+
+
+#content, #dog-content {
+color: white;
+height: 400px;
+margin-bottom: 40px;
+display: flex;
+flex-direction: column;
+align-items: space-around;
+justify-content: center;
+}
+
+#img-holder, #dog-img-holder {
+height: 67%;
+margin: auto;
+}
+  
+#video-holder {
+height: 67%;
+margin: auto;
+}
+  
+video {
+height: 100%;
+}
+
+#fact-remove, #dog-fact-remove {
+width: 93%;
+height: 20%;
+margin: auto;
+}
+
+#fact-remove p {
+text-align: center;
+}
+
+img {
+height: 100%;
+}
+}
+@media only screen and (max-width: 1201px) and (min-width: 601px) {
 .all {
 color: white;
 display: flex;

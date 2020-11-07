@@ -78,8 +78,60 @@ export default {
 </script>
 
 <style scoped>
+  @media only screen and (max-width: 600px) {
+  .home {
+  color: white;
+  }
+  #options {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  }
 
-  @media only screen and (max-width: 1200px) {
+  #options p, #options button {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  }
+
+  #content {
+  height: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: center;
+  }
+
+  #img-holder {
+  height: 67%;
+  }
+
+  #video-holder {
+  height: 67%;
+  }
+
+  #fact-save {
+  height: 20%;
+  width: 93%;
+  margin: auto;
+  }
+
+  #fact-save p {
+  text-align: center
+  }
+
+  img {
+  height:100%
+  }
+
+  video {
+  height: 100%;
+  }
+  }
+  @media only screen and (min-width: 601px) and (max-width: 1200px) {
   .home {
   color: white;
   }
@@ -109,11 +161,11 @@ export default {
   #img-holder {
   height: 67%;
   }
-  
+
   #video-holder {
   height: 67%;
   }
-  
+
   #fact-save {
   height: 20%;
   width: 93%;
@@ -125,9 +177,9 @@ export default {
   }
 
   img {
-  height: 100%;
+  height:100%
   }
-  
+
   video {
   height: 100%;
   }
@@ -163,12 +215,12 @@ export default {
   width: 40%;
   height: 100%;
   }
-  
+
   #video-holder {
   width: 40%;
   height: 100%
   }
-  
+
   video {
   height: 100%;
   }
